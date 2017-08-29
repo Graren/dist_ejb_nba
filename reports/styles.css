@@ -1,0 +1,158 @@
+body {
+    background-color: #F5F5F5;
+    margin: 0;
+    height: auto;
+    font-family: arial, sans-serif;
+}
+
+.osc-row {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+}
+
+.mvp-list {
+    margin-bottom: 5%;
+}
+
+.mvp-list h4{
+    margin: 0;
+    border: 1px solid black;
+    padding: 10px;
+}
+
+.mvp-list h4:nth-child(2){
+    background-color: #F1F2A4;
+}
+
+.mvp-list h4:first-child{
+    background-color: khaki;
+    margin-top: 1%;
+}
+
+.mvp-list h4:last-child{
+    background-color: #F1F2BE;
+}
+
+
+.title {
+    width: 100%;
+    height: 5%;
+    min-height: 64px;
+    background-color: #000000
+}
+
+.title h1 {
+    margin: 0;
+    color: white;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+}
+
+.container {
+    flex: 1;
+    display: flex;
+    flex-flow: column;
+    width: 90%;
+    align-self: center;
+    height: auto;
+    min-width:1120px;
+    background-color: #FFEB3B;
+    box-shadow: -6px 5px 10px #000;
+    margin: auto;
+    margin-top: 2.5%;
+    margin-bottom: 2.5%;
+}
+
+.awesome-table {
+    flex: 1;
+    width: 100%;
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    table-layout: fixed;
+}
+
+table td, table th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+    word-wrap:break-word
+}
+
+table tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+
+.team-name {
+    padding-bottom: 10px;
+}
+
+.team-name h2 {
+    margin: 0;
+}
+
+.team-data{
+    flex: 1;
+    display: flex;
+    margin-top: 6%;
+}
+
+.mvp-holder {
+    padding-bottom: 2.5%;
+}
+
+.team-holder {
+    margin: 1%;
+    flex: 1;
+    padding: 15px;
+    background-color: #F5F5F5;
+}
+
+.table-holder {
+    display: inline-flex;
+    flex:1;
+    border-radius: 6px;
+    box-shadow: 1px black;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.table-container {
+    display: flex;
+    flex: 1;
+    max-height:400px;
+    overflow-y: auto
+}
+
+.button-holder-data {
+    display: flex;
+    flex: 1;
+    width: 80%;
+    align-self: center;
+    margin-bottom: 2%;
+    padding: 20px;
+    background-color: #F5F5F5;
+    border-radius: 6px;
+    align-items: center;
+}
+
+
+
+.data-button {
+    flex-grow: 8;
+}
+
+.data-score {
+    flex-grow: 10;
+    display: flex;
+}
+
+.data-score h1 {
+    margin: 0;
+}

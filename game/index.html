@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="./styles.css" rel="stylesheet">
+    </head>
+    <body>
+        <div class="title">
+            <h1>NBA game</h1>
+        </div>
+  
+  <!-- Responsive table starts here -->
+  <!-- For correct display on small screens you must add 'data-title' to each 'td' in your table -->
+        <div class="container">
+            <div class="table-holder">
+                <div class="team-holder">
+                        <div class="team-name">
+                            <h2 id="team-1-name">Team 1</h2>
+                        </div>
+                        <div class="table-container">
+            <!-- Table starts here -->
+                            <table id="table-1" class="table awesome-table">
+                                <thead>
+                                    <tr>
+                                        <th>Numero</th>
+                                        <th>Jugador</th>
+                                        <th>Score</th>
+                                        <th>Fouls</th>
+                                        <th>Anotar</th>
+                                        <th>Falta</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                    <div class="team-data">
+                        <h3>Team Fouls : </h3>
+                        <h3 id="team-1-fouls">0</h3>
+                    </div>
+                </div>
+
+                <div class="team-holder">
+                    <div class="team-name">
+                        <h2 id="team-2-name"> Team 2</h2>
+                    </div>
+                    <div class="table-container">
+        <!-- Table starts here -->
+                        <table id="table-2" class="table awesome-table">
+                            <thead>
+                                <tr>
+                                    <th>Numero</th>
+                                    <th>Jugador</th>
+                                    <th>Score</th>
+                                    <th>Fouls</th>
+                                    <th>Anotar</th>
+                                    <th>Falta</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                
+                            </tbody>
+                        </table>
+                    </div>
+                        <div class="team-data">
+                            <h3>Team Fouls : </h3>
+                            <h3 id="team-2-fouls">0</h3>
+                        </div>
+                </div>
+            </div>
+    
+            <div class="button-holder-data">
+                <div class="data-button">
+                    <button type="" id="end-game">End Game</button>
+                </div>
+                <div class="data-score">
+                    <h1 id="team-1-global-score">0</h1>
+                    <h1>-</h1>
+                    <h1 id="team-2-global-score">0</h1>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script src="./app.js">  
+    </script>
+</html>
