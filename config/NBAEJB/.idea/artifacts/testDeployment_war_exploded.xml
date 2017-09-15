@@ -1,0 +1,23 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="testDeployment:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/testDeployment_war_exploded.war</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="testDeployment/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="testDeployment" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="file-copy" path="$PROJECT_DIR$/out/artifacts/NBAEJB3/NBAEJB3.jar" />
+          <element id="library" level="project" name="jboss-cli-client" />
+          <element id="library" level="project" name="KotlinJavaRuntime" />
+          <element id="file-copy" path="C:/Dev/gson-2.8.1.jar" />
+          <element id="artifact" artifact-name="NBAEJB2" />
+          <element id="library" level="application_server_libraries" name="Tomcat 8.0.39" />
+        </element>
+      </element>
+      <element id="module-output" name="NBAEJB" />
+      <element id="artifact" artifact-name="NBAEJB3" />
+    </root>
+  </artifact>
+</component>

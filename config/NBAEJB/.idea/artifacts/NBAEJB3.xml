@@ -1,0 +1,18 @@
+<component name="ArtifactManager">
+  <artifact type="ejb-jar" name="NBAEJB3">
+    <output-path>$PROJECT_DIR$/out/artifacts/NBAEJB3</output-path>
+    <root id="archive" name="NBAEJB3.jar">
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="extracted-dir" path="C:/Dev/Visual/JDBCOConnection.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="C:/Dev/postgresql-9.3-1102.jdbc41.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="C:/Dev/Visual/Damson.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/Runtimes/Wildfly/wildfly-10.1.0.Final/bin/client/jboss-cli-client.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/Runtimes/Wildfly/wildfly-10.1.0.Final/bin/client/jboss-client.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/kotlin-runtime.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/kotlin-reflect.jar" path-in-jar="/" />
+      <element id="module-output" name="NBAEJB" />
+    </root>
+  </artifact>
+</component>
