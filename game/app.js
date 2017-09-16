@@ -1,3 +1,7 @@
+const gameContainer = document.querySelector(".game-container")
+const gameListContainer = document.querySelector(".game-list-container")
+const backButton = document.querySelector("#back-button")
+const gameList = document.querySelector("#game-list")
 const table1 = document.querySelector("#table-1")
 const table2 = document.querySelector("#table-2")
 const scoreTeam1 = document.querySelector("#team-1-global-score")
@@ -7,70 +11,41 @@ const foulTeam2 = document.querySelector("#team-2-fouls")
 const teamName1 = document.querySelector("#team-1-name")
 const teamName2 = document.querySelector("#team-2-name")
 const endGameButton = document.querySelector("#end-game")
-const gameId = 79;
+var gameId = 79;
 
 var foulTeam1Holder = 0;
 var foulTeam2Holder = 0;
 var scoreTeam1Holder = 0;
 var scoreTeam2Holder = 0;
 
-const gteams = [];
+var gteams = [];
 const game = {};
 
 const addr = "http://localhost:8082/";
-const dummyData = {
-    one: [
-        {
-            number: 1,
-            player: "aaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-        },
-        {
-            number: 2,
-            player: "bbbbbbbbbbbbbbbbbbbbbb",
-        },
-        {
-            number: 3,
-            player: "cccccccccccccccccccccc",
-        },
-        {
-            number: 4,
-            player: "dddddddddddddddddddddd",
-        },
-        {
-            number: 5,
-            player: "eeeeeeeeeeeeeeeeeee",
+
+const buildList = (arr,list) => {
+    arr.forEach( (e) =>{
+        const { game_id, arena_name, date } = e
+        let li = document.createElement("li")
+        let a = document.createElement("a")
+        a.href = "#"
+        a.onclick = (el) => {
+            gameId = game_id
+            makeRequest(game_id)
         }
-    ],
-    two: [
-        {
-            number: 1,
-            player: "affffffffffffffffffff",
-        },
-        {
-            number: 2,
-            player: "bxxxxxxxxxxxxxxxxxxxxx",
-        },
-        {
-            number: 3,
-            player: "czzzzzzzzzzzzzzzzzzzz",
-        },
-        {
-            number: 4,
-            player: "d",
-        },
-        {
-            number: 5,
-            player: "e",
-        }
-    ]
+        a.textContent = `GAME - ${date} - AT ${arena_name}`
+        li.appendChild(a)
+        list.appendChild(li)
+    })
 }
-
-
 
 const insertGameData = (arr) => {
     arr.forEach( (e,index) => {
         let { table, teamName, players } = e
         e.tn.textContent = `${teamName}`
+        while (table.firstChild) {
+            table.removeChild(table.firstChild);
+        }
         players.forEach( el => {
             let row = table.insertRow(table.rows.length)
             let player = document.createElement("p")
@@ -120,10 +95,6 @@ const insertGameData = (arr) => {
 endGameButton.onclick = () => {
     let winner = game.data.reduce( (prev,curr) => prev.score > curr.score ? prev : curr)
     alert(`Gano el equipo ${winner.teamName} !!!11!1!`)
-    endGameButton.disabled = true;
-    let buttons = document.querySelectorAll("button").forEach(e => {
-        e.disabled = true
-    })
     const playerss = []
     game.data.forEach( d => {
         let play = []
@@ -159,15 +130,16 @@ endGameButton.onclick = () => {
     }).catch(err => {
         console.log(err)
     })
-
+    backButton.click()
 }
 
-const makeRequest = () => {
+const makeRequest = (gameId) => {
     fetch(`${addr}gameData/${gameId}`)
         .then( response => response.json())
         .then( data => {
             console.log(data)
             let teamNames= []
+            console.log(teamNames)
             data.ps.forEach(e => {
                 let { team_name } = e
                 if(!teamNames.includes(team_name)){
@@ -179,10 +151,17 @@ const makeRequest = () => {
             return Promise.resolve()
         })
         .then(() => {
+            gameContainer.style.display = "flex"
+            gameListContainer.style.display = "none"
+            backButton.style.display = "block"
+            return Promise.resolve()
+        })
+        .then(() => {
             const tables = [table1,table2]
             const scoreD = [scoreTeam1,scoreTeam2]
             const foulD = [foulTeam1,foulTeam2]
             const teamNames = [teamName1,teamName2]
+            console.log(gteams)
             game.data = gteams.map((e,index) => {
                 e.table = tables[index]
                 e.score = 0
@@ -202,4 +181,26 @@ const makeRequest = () => {
 
 // insertDummyData(table1,dummyData.one,1)
 // insertDummyData(table2,dummyData.two,2)
-makeRequest();
+// makeRequest(gameId);
+
+const openGamesRequest = () => {
+    gameContainer.style.display = "none"
+    backButton.style.display = "none"
+    fetch(`${addr}openGames`)
+        .then( res => {
+            return res.json()
+        })
+        .then(json => {
+            console.log(json)
+            buildList(json,gameList)
+        })
+}
+
+backButton.onclick = () => {
+    gameContainer.style.display = "none"
+    backButton.style.display = "none"
+    gameListContainer.style.display = "block"
+    gteams = []
+}
+
+openGamesRequest()
