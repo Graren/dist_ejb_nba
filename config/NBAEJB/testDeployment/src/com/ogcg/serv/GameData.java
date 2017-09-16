@@ -23,7 +23,6 @@ public class GameData extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Gson g = new Gson();
-
         String pathInfo = request.getPathInfo(); // /{value}/test
         String[] pathParts = pathInfo.split("/");
         String part1 = pathParts[1]; // {value}

@@ -190,6 +190,25 @@ public class NBADataSource implements NbaRemoteInterface{
         }
     }
 
+    @Override
+    public String[][] getOpenGames() throws NamingException {
+        Context context = new InitialContext();
+        DBConn Dcon = (DBConn)
+                context.lookup("java:module/" + DBConn.class.getSimpleName());
+        JDBCOConnection con = Dcon.con;
+        Connection c = Dcon.getSQLConn();
+        try {
+            Statement stmt = c.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_READ_ONLY);
+            String q = String.format("Select g.game_id, g.game_date as date, a.arena_id, a.name as arena_name from game as g left JOIN game_end as ge ON g.game_id = ge.game_id INNER JOIN arena as a ON a.arena_id = g.arena_id WHERE ge.game_id IS NULL");
+            ResultSet res = stmt.executeQuery(q);
+            String[][] result = getResult(res);
+            return result;
+        } catch (Exception e1) {
+            e1.printStackTrace();
+            return null;
+        }
+    }
+
 
     @Override
     public String[][] getTeamsOrderedByWins() throws NamingException {

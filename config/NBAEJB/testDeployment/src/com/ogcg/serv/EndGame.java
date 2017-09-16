@@ -52,11 +52,11 @@ public class EndGame extends HttpServlet {
         try {
             na.insertGameResults(pla2.toMap(),pla.toMap(),Integer.valueOf(game_id),winner);
             response.setStatus(200);
-            response.getWriter().print(p);
+            response.getWriter().print(g.toJson(pla) + " " +  g.toJson(pla2));
         } catch (NamingException e) {
             e.printStackTrace();
             response.setStatus(500);
-            response.getWriter().print(p);
+            response.getWriter().print(g.toJson(pla) + " " +  g.toJson(pla2));
         }
 //        na.insertGameResults();
 //        NbaRemoteInterface nba = DataSourceOsc.Helper.oinstance.getNba().insertGameResults();

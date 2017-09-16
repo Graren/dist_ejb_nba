@@ -29,4 +29,6 @@ public interface NbaRemoteInterface {
     public String[][] getGameData(Integer game_id) throws NamingException;
 
     String[][] getArenas() throws NamingException;
+
+    public String[][] getOpenGames() throws NamingException;
 }
